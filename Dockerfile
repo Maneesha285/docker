@@ -1,12 +1,5 @@
-FROM openjdk:17-alpine
+FROM jenkins/jenkins:lts-jdk17
+USER root
+RUN curl -sSL https://get.docker.com/ | sh
+USER jenkins
 
-COPY . /app
-
-WORKDIR /app
-
-RUN javac ./src/main/java/org/neoteric/App.java
-
-WORKDIR /app/src/main/java
-
-CMD ["java"
-,"org.neoteric.App"]
